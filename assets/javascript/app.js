@@ -83,12 +83,12 @@ $(document).on('click', '.choice', function() {
         score++;
         console.log('Correct');
         preloadImage('win');
-        setTimeout(nextQuestion, 5000);
+        setTimeout(nextQuestion, 4000);
     } else {
         lost++;
         console.log('Wrong');
         preloadImage('loss');
-        setTimeout(nextQuestion, 5000);
+        setTimeout(nextQuestion, 4000);
     }
 
     // console.log('click: ', selectedAnswer);
@@ -152,7 +152,8 @@ function preloadImage(status) {
 
 }
 
-//preloadImage (win)
-
-
-loadQuestion();
+$('#start').click(function(){
+    $('#start').remove();
+    $('#time').html(counter);
+    loadQuestion();
+});

@@ -1,5 +1,7 @@
 
-
+body {
+    background-image: url(../images/rl-wallpaper.jpg);
+}
 
 .choice{
     border: 1px solid lightgray;
@@ -7,3 +9,6 @@
     border-radius: 4px;
     cursor: pointer;
 } 
+.container {
+    background-color: whitesmoke;
+}

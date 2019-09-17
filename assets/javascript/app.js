@@ -43,7 +43,7 @@ function countDown() {
 //display questions and choices to the browser
 
 function loadQuestion() {
-    counter = 1;
+    counter = 30;
     timer = setInterval(countDown, 1000);
 
     const question = quizQuestions[currentQuestion].question; //
@@ -104,5 +104,20 @@ function displayResult() {
 
     $('#game').html(result);
 }
+
+//reset button functionality
+
+$(document).on('click', '#reset', function() {
+    // console.log('Reset');
+    
+    counter = 30;
+    currentQuestion = 0;
+    score = 0;
+    lost = 0;
+    timer = null;
+
+
+    loadQuestion();
+});;
 
 loadQuestion();

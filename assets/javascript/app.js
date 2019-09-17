@@ -11,7 +11,7 @@ function nextQuestion() {
 
     const isQuestionOver = (quizQuestions.length - 1) === currentQuestion;
     if (isQuestionOver) {
-
+        displayResult();
         console.log("Game Over");
     } else {
         currentQuestion++;
@@ -43,7 +43,7 @@ function countDown() {
 //display questions and choices to the browser
 
 function loadQuestion() {
-    counter = 30;
+    counter = 1;
     timer = setInterval(countDown, 1000);
 
     const question = quizQuestions[currentQuestion].question; //
@@ -78,22 +78,31 @@ $(document).on('click', '.choice', function() {
     //user wins/losses
     if (correctAnswer === selectedAnswer){
         score++;
-        nextQuestion();
         console.log('Correct');
 
         nextQuestion();
-
     } else {
         lost++;
         console.log('Wrong');
 
         nextQuestion();
-
     }
 
     // console.log('click: ', selectedAnswer);
 });
 
+//display results
 
+function displayResult() {
+    const result = `
+    <p>You get ${score} question(s) right</p>
+    <p>You missed ${lost} question(s)</p>
+    <p>Total Questions: ${quizQuestions.length}</p>
+    <button class ="btn btn-primary" id="reset">Reset Game</button>
+
+    `;
+
+    $('#game').html(result);
+}
 
 loadQuestion();

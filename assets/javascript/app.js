@@ -43,7 +43,7 @@ function countDown() {
 //display questions and choices to the browser
 
 function loadQuestion() {
-    counter = 2;
+    counter = 30;
     timer = setInterval(countDown, 1000);
 
     const question = quizQuestions[currentQuestion].question; //
@@ -61,13 +61,39 @@ function loadChoices(choices) {
     let result = '';
 
     for (let i = 0; i < choices.length; i++) {
-        result += `<p class="choice" data-answer=""${choices[i]}">${choices[i]}</p>`;
+        result += `<p class="choice" data-answer="${choices[i]}">${choices[i]}</p>`;
 
     }
 
     return result;
 }
 
-// 
+//Correct/Incorrect choice, then go to next quesion
+
+$(document).on('click', '.choice', function() {
+    clearInterval(timer);
+    const selectedAnswer = $(this).attr('data-answer');
+    const correctAnswer = quizQuestions[currentQuestion].correctAnswer;
+
+    //user wins/losses
+    if (correctAnswer === selectedAnswer){
+        score++;
+        nextQuestion();
+        console.log('Correct');
+
+        nextQuestion();
+
+    } else {
+        lost++;
+        console.log('Wrong');
+
+        nextQuestion();
+
+    }
+
+    // console.log('click: ', selectedAnswer);
+});
+
+
 
 loadQuestion();

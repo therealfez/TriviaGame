@@ -6,11 +6,27 @@ let score = 0;
 let lost = 0;
 let timer;
 
+
+function nextQuestion() {
+
+    const isQuestionOver = (quizQuestions.length - 1) === currentQuestion;
+    if (isQuestionOver) {
+
+        console.log("Game Over");
+    } else {
+        currentQuestion++;
+        loadQuestion();
+    }
+
+}
 //Start a 30 second timer for user to respond to question
 
 function timeUp() {
     clearInterval(timer);
 
+    lost++;
+
+    nextQuestion();
 }
 
 function countDown() {
@@ -27,7 +43,7 @@ function countDown() {
 //display questions and choices to the browser
 
 function loadQuestion() {
-    counter = 30;
+    counter = 2;
     timer = setInterval(countDown, 1000);
 
     const question = quizQuestions[currentQuestion].question; //
@@ -51,5 +67,7 @@ function loadChoices(choices) {
 
     return result;
 }
+
+// 
 
 loadQuestion();

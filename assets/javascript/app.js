@@ -26,7 +26,9 @@ function timeUp() {
 
     lost++;
 
-    nextQuestion();
+    preloadImage('lost');
+
+    setTimeout(nextQuestion, 3000);
 }
 
 function countDown() {
@@ -80,13 +82,13 @@ $(document).on('click', '.choice', function() {
     if (correctAnswer === selectedAnswer){
         score++;
         console.log('Correct');
-
-        nextQuestion();
+        preloadImage('win');
+        setTimeout(nextQuestion, 5000);
     } else {
         lost++;
         console.log('Wrong');
-
-        nextQuestion();
+        preloadImage('loss');
+        setTimeout(nextQuestion, 5000);
     }
 
     // console.log('click: ', selectedAnswer);
@@ -131,6 +133,26 @@ function loadRemainingQuestion() {
 }
 
 //display gifs for correct and wrong answers
+function preloadImage(status) {
+    const correctAnswer = quizQuestions[currentQuestion].correctAnswer;
+
+    if(status === 'win') {
+        $('#game').html(`
+        <p class="preload-image">You picked the correct answer!</p>
+        <p class="preload-image">The correct answer is <b>${correctAnswer}</b></p>
+        <img src="./assets/images/rizzo-approves.gif">
+        `);
+    } else if(status ==='loss') {
+        $('#game').html(`
+        <p class="preload-image">You picked the wrong answer...</p>
+        <p class="preload-image">The correct answer is <b>${correctAnswer}</b></p>
+        <img src="./assets/images/rizzo-disapproves.gif">
+        `);
+    }
+
+}
+
+//preloadImage (win)
 
 
 loadQuestion();

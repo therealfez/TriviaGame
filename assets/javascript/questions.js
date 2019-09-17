@@ -25,3 +25,6 @@ const quizQuestions = [
         correctAnswer:"Champion"
 }
 ];
+
+const funImages = ['./assets/images/rizzo-approves.gif'];
+const sadImages = ['./assets/images/rizzo-disapproves.gif'];

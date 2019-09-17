@@ -1,4 +1,4 @@
-var quizQuestions = [
+const quizQuestions = [
     {
         questions: 'What is Rocket League?',
         choices: ["A show about competetive rocket building hosted my NASA", "A Racing TV show where eccentric characters compete in space races.", "A racing game", "A video game where you hit a ball with a car"],
